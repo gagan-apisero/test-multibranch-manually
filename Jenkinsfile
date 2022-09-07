@@ -1,11 +1,13 @@
 def timeStamp = Calendar.getInstance().getTime().format('YYYYMMdd-hhmmss',TimeZone.getTimeZone('IST'))
 pipeline {
   agent any
+	  environment {
+			APP_NAME = 'jenkinsCICDTestAPI'
+	  		APP = "jenkinsCICDTestAPI-${timeStamp}"
+	}
   stages {
 	  
 stage('Build Application') {
-      environment {
-      }
       steps {
         script{
           stdout = bat( script: 'git.exe log -1 --pretty="format:Commit Message: %%s% %%%n%% Author: %%an% %%n% Date: %%aD%"' ,returnStdout: true).trim()
