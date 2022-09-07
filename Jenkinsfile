@@ -1,11 +1,6 @@
 def timeStamp = Calendar.getInstance().getTime().format('YYYYMMdd-hhmmss',TimeZone.getTimeZone('IST'))
 pipeline {
   agent any
-  environment {
-			APP_NAME = 'jenkinsCICDTestAPI'
-	  		APP = "jenkinsCICDTestAPI-${timeStamp}"
-			
-	}
   stages {
 	  
 stage('Build Application') {
